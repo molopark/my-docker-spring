@@ -1,0 +1,8 @@
+# DB 데이터 폴더 (데이터는 로컬에만 보관하고 Git에는 올리지 않습니다)
+postgres_data/
+redis_data/
+
+# OS 및 툴 설정 파일
+.DS_Store
+Thumbs.db
+.vscode/

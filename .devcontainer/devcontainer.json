@@ -1,0 +1,17 @@
+{
+  "name": "Java 17 Dev Environment",
+  "dockerComposeFile": ["../docker-compose.yml"],
+  "service": "app", // 아래에서 정의할 app 서비스에 접속
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "runServices": ["db", "redis"], // DB와 Redis도 같이 실행
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack", // Java 통합 팩
+        "cksharma.redis-client-vscode", // Redis 클라이언트
+        "mtxr.sqltools" // DB 클라이언트
+      ]
+    }
+  }
+}
