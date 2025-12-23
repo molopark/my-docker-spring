@@ -1,4 +1,7 @@
+version: '3.8'
+
 services:
+  # PostgreSQL 설정
   db:
     image: postgres:15
     container_name: postgres_db
@@ -12,6 +15,7 @@ services:
     volumes:
       - ./postgres_data:/var/lib/postgresql/data
 
+  # Redis 설정
   redis:
     image: redis:latest
     restart: always
