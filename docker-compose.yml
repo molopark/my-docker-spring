@@ -3,7 +3,7 @@ version: '3.8'
 services:
   # Java 개발용 앱 컨테이너 (Dev Container)
   app:
-    image: mcr.microsoft.com/devcontainers/java:17
+    build: .
     volumes:
       - .:/workspaces/my-docker-spring:cached
       - vscode-server:/home/vscode/.vscode-server # VS Code Server 캐싱 (vscode 사용자 홈)
@@ -28,7 +28,7 @@ services:
 
   # Redis 설정
   redis:
-    image: redis:8.2
+    image: redis:7-alpine
     restart: always
     ports:
       - "6379:6379"
