@@ -1,6 +1,17 @@
 version: '3.8'
 
 services:
+  # Java 개발용 앱 컨테이너 (Dev Container)
+  app:
+    image: mcr.microsoft.com/devcontainers/java:17
+    volumes:
+      - .:/workspaces/my-docker-spring:cached
+      - vscode-server:/home/vscode/.vscode-server # VS Code Server 캐싱 (vscode 사용자 홈)
+    command: sleep infinity
+    depends_on:
+      - db
+      # - redis # Redis 의존성 주석 처리 (제외 시)
+
   # PostgreSQL 설정
   db:
     image: postgres:15
@@ -17,10 +28,12 @@ services:
 
   # Redis 설정
   redis:
-    image: redis:latest
+    image: redis:8.2
     restart: always
     ports:
       - "6379:6379"
     volumes:
       - ./redis_data:/data
 
+volumes:
+  vscode-server:

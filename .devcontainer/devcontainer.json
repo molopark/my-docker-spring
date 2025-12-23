@@ -1,9 +1,11 @@
 {
-  "name": "Java 17 Dev Environment",
+  "name": "Java Docker Dev",
   "dockerComposeFile": ["../docker-compose.yml"],
   "service": "app", // 아래에서 정의할 app 서비스에 접속
-  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
-  "runServices": ["db", "redis"], // DB와 Redis도 같이 실행
+  "workspaceFolder": "/workspaces/my-docker-spring",
+  // "runServices": ["db", "redis"], // DB와 Redis도 같이 실행
+  "runServices": ["db"], // Redis 제외 (필요 시 "redis" 다시 추가)
+  "remoteUser": "vscode",
 
   "customizations": {
     "vscode": {
