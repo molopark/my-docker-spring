@@ -6,7 +6,7 @@ services:
     build: .
     volumes:
       - .:/workspaces/my-docker-spring:cached
-      - vscode-server:/home/vscode/.vscode-server # VS Code Server 캐싱 (vscode 사용자 홈)
+      # - vscode-server:/home/vscode/.vscode-server # root로 실행 시 경로가 다르므로 주석 처리 (필요 시 /root/.vscode-server 사용)
     command: sleep infinity
     depends_on:
       - db
@@ -24,7 +24,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - ./postgres_data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data # 호스트 바인딩 대신 Named Volume 사용 (권한/성능 문제 해결)
 
   # Redis 설정
   redis:
@@ -33,7 +33,9 @@ services:
     ports:
       - "6379:6379"
     volumes:
-      - ./redis_data:/data
+      - redis_data:/data
 
 volumes:
   vscode-server:
+  postgres_data:
+  redis_data:
