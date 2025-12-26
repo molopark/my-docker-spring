@@ -40,3 +40,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+.gradle/
+.gradle-cache/
+.gradle

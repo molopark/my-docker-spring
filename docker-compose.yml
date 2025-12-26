@@ -1,17 +1,6 @@
 version: '3.8'
 
 services:
-  # Java 개발용 앱 컨테이너 (Dev Container)
-  app:
-    build: .
-    volumes:
-      - .:/workspaces/my-docker-spring:cached
-      # - vscode-server:/home/vscode/.vscode-server # root로 실행 시 경로가 다르므로 주석 처리 (필요 시 /root/.vscode-server 사용)
-    command: sleep infinity
-    depends_on:
-      - db
-      # - redis # Redis 의존성 주석 처리 (제외 시)
-
   # PostgreSQL 설정
   db:
     image: postgres:15
@@ -36,6 +25,5 @@ services:
       - redis_data:/data
 
 volumes:
-  vscode-server:
   postgres_data:
   redis_data:
